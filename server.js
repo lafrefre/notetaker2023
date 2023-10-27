@@ -30,9 +30,22 @@ app.post('/api/notes', (req, res) => {
     notes.push(newNote);
     fs.writeFileSync(dbFilePath, JSON.stringify(notesData));
     res.json(newNote);
-}catch(err){
+});
+    res.status(500).json({ error: 'Could not save note' });
+try {
+    // Routes for all of the notes
+    app.post('/api/notes', (req, res) => {
+        const newNote = req.body;
+        const notes = fs.readFileSync(dbFilePath, 'utf-8');
+        newNoteData = Date.now().toString();
+        notes.push(newNote);
+        fs.writeFileSync(dbFilePath, JSON.stringify(notesData));
+        res.json(newNote);
+    });
+} catch (err) {
     res.status(500).json({ error: 'Could not save note' });
 }
+
 try {
     // Routes for all of the notes
     app.post('/api/notes', (req, res) => {
@@ -65,7 +78,7 @@ app.listen(PORT, () => {
     app.listen(PORT, () => {
         console.log(`App listening on PORT ${PORT}`);
     });
-    
+
 
 app.post('/style.css', (req, res) => {
     res.setHeader('Content-Type', 'text/css');
