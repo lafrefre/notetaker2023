@@ -31,3 +31,7 @@ Even though the "Save Note" button is not working, when it is fixed, you may fin
 
 ### Screenshots
 can be found under screenshot file 
+
+### Links 
+github repo - https://github.com/lafrefre/notetaker2023
+Heroku depolyement - not valid
